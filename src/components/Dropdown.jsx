@@ -29,7 +29,7 @@ const Dropdown = ({ fonts, dropDown, setFont, setDropDown }) => {
   });
   return (
     dropDown && (
-      <div className="absolute bg-white-100 dark:bg-black-300 dark:text-white-200 z-40 shadow-lg rounded-md right-0 p-6 top-16 w-56">
+      <div className="absolute bg-white-100 dark:bg-black-300 dark:text-white-200 dark:shadow-white-400  shadow-lg z-40 rounded-md right-0 p-6 top-16 w-56">
         {items}
       </div>
     )

@@ -5,10 +5,9 @@ import Toggle from "./Toggle";
 import Input from "./Input";
 import Dropdown from "./Dropdown";
 import fonts from '../data/fonts'
-import { wordDetail } from "../data/api/dictionary";
-console.log(wordDetail)
 
 const Header = () => {
+  
   const [font, setFont] = useState("sans-serif");
   const [dropDown, setDropDown] = useState(false);
   return (
@@ -72,7 +71,8 @@ const Header = () => {
         />
       </nav>
       <div>
-        <Input placeholder="Search for any word..." />
+        <Input placeholder="Search for any word..."/>
+      
       </div>
     </header>
   );
