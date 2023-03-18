@@ -1,7 +1,7 @@
  const fonts = [
   {
     key: "Sans-serif",
-    value: "OpenInter",
+    value: "Inter",
   },
   {
     key: "Serif",
