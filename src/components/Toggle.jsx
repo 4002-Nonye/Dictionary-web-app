@@ -2,10 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 
 const Toggle = () => {
-  
-  const [position,setPosition]=useState('start')
+  const [position, setPosition] = useState(false);
   const [theme, setTheme] = useState(null);
-
 
   useEffect(() => {
     if (window.matchMedia("(prefers-color-scheme:dark)").matches) {
@@ -15,32 +13,24 @@ const Toggle = () => {
   useEffect(() => {
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
-      setPosition('end')
-     
-     
     } else {
       document.documentElement.classList.remove("dark");
-      setPosition('start')
-     
-      
     }
-
-   
-  }, [theme,position]);
+    setPosition(!position);
+  }, [theme]);
 
   const switchTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
-  //   if(theme==='dark')setPosition('end')
-  // if(theme==='light')setPosition('start')
+   
   };
   return (
     <div className="ml-6 mt-2">
       {" "}
-    
       <div
         onClick={switchTheme}
-        className={`w-11 h-5 rounded-xl p-1 flex items-center justify-${position} cursor-pointer bg-white-400  dark:bg-purple`}
-       
+        className={`w-11 h-5 rounded-xl p-1 flex items-center cursor-pointer bg-white-400  dark:bg-purple ${
+          position ? "justify-end" : "justify-start"
+        }`}
       >
         <div className="w-4 h-4 bg-white-100 rounded-xl "></div>
       </div>

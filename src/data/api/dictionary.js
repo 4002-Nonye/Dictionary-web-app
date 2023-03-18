@@ -1,9 +1,9 @@
-import axios from "axios";
+import React from 'react'
 
-const BASE_URL = 'https://api.dictionaryapi.dev/api/v2/entries/en'
+const dictionary = () => {
+  return (
+    <div>dictionary</div>
+  )
+}
 
-export const dictionary= axios.create({
-    baseURL:BASE_URL
-})
-
-
+export default dictionary
