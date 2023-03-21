@@ -1,8 +1,14 @@
 import React from 'react'
 
-const Error = ({msg}) => {
+const Error = ({msg,className}) => {
   return (
-    <p className='text-danger text-sm font-bold animate-shake'>{msg}</p>
+   <>
+   
+      <p className={className}>
+        {msg}
+      </p>
+      </>
+   
   )
 }
 

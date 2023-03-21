@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import logo from "../assets/logo.svg";
 import Toggle from "./Toggle";
-import Input from "./Input";
+
 import Dropdown from "./Dropdown";
 import fonts from '../data/fonts'
 
@@ -70,10 +70,7 @@ const Header = () => {
           setFont={setFont}
         />
       </nav>
-      <div>
-        <Input placeholder="Search for any word..."/>
-      
-      </div>
+     
     </header>
   );
 };

@@ -2,22 +2,31 @@ import React, { useState } from "react";
 import searchIcon from "../assets/search.svg";
 import Error from "./Error";
 
-const Input = ({ placeholder, onClick }) => {
+const SearchBar = ({ placeholder, term, setTerm, findWord }) => {
   const [err, setErr] = useState(false);
 
   const [searchTerm, setSearchTerm] = useState("");
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    if (searchTerm.trim() === "") setErr(true);
+
+    // KILL SEARCH IF INPUT TERM IS EMPTY
+    if (searchTerm.trim() === "") {
+      setErr(true);
+      return;
+    }
+
+    findWord();
   };
   const onTermSubmit = (e) => {
     setSearchTerm(e.target.value);
+    setTerm(e.target.value);
+    // console.log(term)
     setErr(false);
   };
 
   return (
-    <>
+    <div className="h-48">
       <form onSubmit={onFormSubmit} className="relative">
         <input
           placeholder={placeholder}
@@ -29,12 +38,12 @@ const Input = ({ placeholder, onClick }) => {
           alt="search"
           src={searchIcon}
           className="cursor-pointer absolute top-[58%] right-[5%]"
-          onClick={onClick}
+          onClick={onFormSubmit}
         />
       </form>
-      {err && <Error msg={`Whoops! can't be empty`} />}
-    </>
+      {err && <Error msg={`Whoops! can't be empty`} className={'text-danger text-sm font-bold animate-shake'}/>}
+    </div>
   );
 };
 
-export default Input;
+export default SearchBar;

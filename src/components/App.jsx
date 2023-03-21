@@ -1,15 +1,10 @@
-import { useState } from "react";
-import Header from "./Header";
-import Card from "./Card";
+import React from "react";
 
-
+import Dictionary from "../data/api/Dictionary";
 
 function App() {
   return (
-    <div className="">
-      <Header  />
-      <Card/>
-    </div>
+  <Dictionary/>
   );
 }
 
