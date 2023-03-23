@@ -26,7 +26,7 @@ const SearchBar = ({ placeholder, term, setTerm, findWord }) => {
   };
 
   return (
-    <div className="h-48">
+    <div className="h-[10rem]">
       <form onSubmit={onFormSubmit} className="relative">
         <input
           placeholder={placeholder}
