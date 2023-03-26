@@ -31,7 +31,7 @@ const Dictionary = () => {
       setStatus(false);
       // console.log(response.ok);
     } catch (error) {
-      // console.log(error);
+     alert(error);
     } finally {
       setLoading(false);
     }

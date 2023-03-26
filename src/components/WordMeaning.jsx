@@ -1,18 +1,44 @@
 import React from "react";
-import oval from "../assets/Oval.svg";
 
-const WordMeaning = ({ wordarr }) => {
+const WordMeaning = ({ wordarr, synonyms }) => {
+  console.log(synonyms);
   const wordArray = wordarr.map((word, index) => {
     return (
-      <div key={index} className="text-[0]">
-        <img alt="" src={oval} />
-        <p className="text-[1.2rem] text-black-400 dark:text-white-100 leading-8 ">
+      <li key={index} className="text-[1.1rem] leading-8 flex flex-col my-3">
+        <p className=" text-black-400 dark:text-white-100   before:content-['\2022'] before:text-purple before:inline-block before:w-3 before:font-bold ">
+          {" "}
           {word.definition}
         </p>
-      </div>
+        {word.example ? (
+          <span className="text-white-400">"{word.example}"</span>
+        ) : (
+          ""
+        )}
+      </li>
     );
   });
-  return <>{wordArray}</>;
-};
 
+  return (
+    <>
+      <ul>
+        {wordArray}
+
+        <div className="mt-8">{synonyms.length===0?'':(  <p className="text-xl text-white-400 font-light ">
+            Synonyms &nbsp; &nbsp;
+            {synonyms.map((syn, index) => {
+              return (
+                <span key={index} className="inline-block text-purple text-lg ">
+                  {syn}, &nbsp;
+                </span>
+              );
+            })}
+          </p>)}
+        {" "}
+        </div>
+        
+      </ul>
+    
+    </>
+  );
+};
 export default WordMeaning;

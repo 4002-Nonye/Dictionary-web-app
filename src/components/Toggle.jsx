@@ -2,27 +2,36 @@ import React from "react";
 import { useState, useEffect } from "react";
 
 const Toggle = () => {
-  const [position, setPosition] = useState(true);
-  const [theme, setTheme] = useState(null);
+  const [position, setPosition] = useState(false);
+  const [theme, setTheme] = useState(getInitialTheme())
 
-  // useEffect(() => {
-  //   if (window.matchMedia("(prefers-color-scheme:dark)").matches) {
-  //     setTheme("dark");
-  //   } else setTheme("light");
-  // }, []);
+  //STORE CURRENT THEME IN LOCAL STORAGE
   useEffect(() => {
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-    setPosition(!position);
+    localStorage.setItem('theme', theme);
   }, [theme]);
 
-  const switchTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-   
-  };
+  //CHECK IF THERE IS AN EXISTING THEME
+  //IF NO EXISTING THEME, SET IT TO LIGHT
+  function getInitialTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    return savedTheme ? savedTheme : 'light';
+  }
+
+  useEffect(() => {
+    if (theme==='dark') {
+      document.documentElement.classList.add("dark");
+      setPosition(true)
+    } else{
+      document.documentElement.classList.remove("dark");
+      setPosition(false)
+    }
+    // setPosition(true);
+  }, [theme]);
+
+  function switchTheme() {
+    setTheme((theme) => (theme === 'light' ? 'dark' : 'light'));
+  }
+
   return (
     <div className="ml-6 mt-2">
       {" "}

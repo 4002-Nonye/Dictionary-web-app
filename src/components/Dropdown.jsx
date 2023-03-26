@@ -1,20 +1,36 @@
 import React, { useState, useEffect } from "react";
+
 const Dropdown = ({ fonts, dropDown, setFont, setDropDown }) => {
   //DEFAULT FONT
-  const [fontFamily, setFontFamily] = useState("sans-serif");
+  const [fontFamily, setFontFamily] = useState('sans-serif');
 
+ 
   //CHANGE BODY FONT ACCORDING TO ITEM SELECTED
   useEffect(() => {
+    //STORE USER'S PREFERRED FONT IN LOCAL STORAGE
+    const savedFont = localStorage.getItem('initialFont');
+    const savedFontFamilyName =localStorage.getItem('initialFontFamily')
+  if (savedFont&&savedFontFamilyName) {
+    setFontFamily(savedFont);
+    setFont(savedFontFamilyName)
+  }
     document.body.style.fontFamily = fontFamily.toLowerCase();
+   
   }, [fontFamily]);
 
   const handleClick = (key,value) => {
     //1. DISPLAY FONT NAME ON SCREEN
     //2. CLOSE DROPDOWN ONCE A FONT HAS BEEN CHOSEN
     //3. UPDATE FONT FAMILY STATE
+   
     setFont(key);
     setDropDown(!dropDown);
-    setFontFamily(value);
+    setFontFamily(value)
+    localStorage.setItem('initialFont',value)
+    localStorage.setItem('initialFontFamily',key)
+   
+    
+  
   };
   const items = fonts.map(({ key, value }) => {
     return (
