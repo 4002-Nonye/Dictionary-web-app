@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import sadFace from "../../assets/sadface.png";
 import Header from "../../components/Header";
@@ -8,7 +7,7 @@ import BeatLoader from "react-spinners/BeatLoader";
 import SuccessPage from "../../components/SuccessPage";
 
 const Dictionary = () => {
-  const [term, setTerm] = useState("");
+  const [term, setTerm] = useState("Keyboard");
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState(false);
@@ -29,14 +28,15 @@ const Dictionary = () => {
       setData(jsonData[0]);
 
       setStatus(false);
-      // console.log(response.ok);
     } catch (error) {
-     alert(error);
+      alert(error);
     } finally {
       setLoading(false);
     }
   };
-
+  useEffect(() => {
+    findWord();
+  }, []);
   return (
     <>
       <Header />

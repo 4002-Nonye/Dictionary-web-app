@@ -5,13 +5,11 @@ import Error from "./Error";
 const SearchBar = ({ placeholder, term, setTerm, findWord }) => {
   const [err, setErr] = useState(false);
 
-  const [searchTerm, setSearchTerm] = useState("");
-
   const onFormSubmit = (e) => {
     e.preventDefault();
 
-    // KILL SEARCH IF INPUT TERM IS EMPTY
-    if (searchTerm.trim() === "") {
+    // IF INPUT TERM IS EMPTY,KILL SEARCH AND RENDER ERROR MSG
+    if (term.trim() === "") {
       setErr(true);
       return;
     }
@@ -19,9 +17,7 @@ const SearchBar = ({ placeholder, term, setTerm, findWord }) => {
     findWord();
   };
   const onTermSubmit = (e) => {
-    setSearchTerm(e.target.value);
     setTerm(e.target.value);
-    // console.log(term)
     setErr(false);
   };
 
@@ -30,7 +26,7 @@ const SearchBar = ({ placeholder, term, setTerm, findWord }) => {
       <form onSubmit={onFormSubmit} className="relative">
         <input
           placeholder={placeholder}
-          value={searchTerm}
+          value={term}
           onChange={onTermSubmit}
           className=" bg-white-200 w-full focus:border-[3px] transition-none focus:border-purple rounded-lg text-xl dark:text-white-100 font-bold caret-purple h-16  outline-none dark:bg-black-300 mt-12 mb-2 ml-auto mr-auto p-4  "
         ></input>
@@ -41,7 +37,12 @@ const SearchBar = ({ placeholder, term, setTerm, findWord }) => {
           onClick={onFormSubmit}
         />
       </form>
-      {err && <Error msg={`Whoops! can't be empty`} className={'text-danger text-sm font-bold animate-shake'}/>}
+      {err && (
+        <Error
+          msg={`Whoops! can't be empty`}
+          className={"text-danger text-sm font-bold animate-shake"}
+        />
+      )}
     </div>
   );
 };

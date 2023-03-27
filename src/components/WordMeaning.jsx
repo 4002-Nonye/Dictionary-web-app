@@ -1,7 +1,6 @@
 import React from "react";
 
 const WordMeaning = ({ wordarr, synonyms }) => {
-  console.log(synonyms);
   const wordArray = wordarr.map((word, index) => {
     return (
       <li key={index} className="text-[1.1rem] leading-8 flex flex-col my-3">
@@ -21,23 +20,29 @@ const WordMeaning = ({ wordarr, synonyms }) => {
   return (
     <>
       <ul>
+        <p className="text-lg text-white-400 tracking-wide font-semibold">
+          {" "}
+          Meanings
+        </p>
         {wordArray}
 
-        <div className="mt-8">{synonyms.length===0?'':(  <p className="text-xl text-white-400 font-light ">
-            Synonyms &nbsp; &nbsp;
-            {synonyms.map((syn, index) => {
-              return (
-                <span key={index} className="inline-block text-purple text-lg ">
-                  {syn}, &nbsp;
-                </span>
-              );
-            })}
-          </p>)}
-        {" "}
+        <div className="mt-8 inline-block ">
+          {synonyms.length === 0 ? (
+            ""
+          ) : (
+            <p className="text-xl text-white-400 font-light lastchild ">
+              Synonyms &nbsp; &nbsp;
+              {synonyms.map((syn, index) => {
+                return (
+                  <span key={index} className=" text-purple text-lg ">
+                    &nbsp; {syn}
+                  </span>
+                );
+              })}
+            </p>
+          )}{" "}
         </div>
-        
       </ul>
-    
     </>
   );
 };

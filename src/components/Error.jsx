@@ -1,15 +1,11 @@
-import React from 'react'
+import React from "react";
 
-const Error = ({msg,className}) => {
+const Error = ({ msg, className }) => {
   return (
-   <>
-   
-      <p className={className}>
-        {msg}
-      </p>
-      </>
-   
-  )
-}
+    <>
+      <p className={className}>{msg}</p>
+    </>
+  );
+};
 
-export default Error
+export default Error;

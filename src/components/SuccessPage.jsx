@@ -1,18 +1,16 @@
 import React from "react";
 import WordMeaning from "./WordMeaning";
 import Link from "./Link";
-
+import Sound from "./Sound";
 
 const SuccessPage = ({ data }) => {
- 
+  //IF DATA IS YET TO ARRIVE FROM API, KILL
   if (!data) return;
 
   const { word, phonetic, phonetics, meanings, sourceUrls } = data;
-  // //   console.log(phonetics,meanings,sourceUrls)
-  console.log(sourceUrls);
   const wordDetail = meanings?.map((meaning, index) => {
     return (
-      <div key={index} className='mt-5'>
+      <div key={index} className="mt-5">
         <div className="flex items-center gap-10">
           <h3 className="capitalize text-black-400 dark:text-white-100 text-[1.27rem] italic font-bold my-4">
             {meaning.partOfSpeech}
@@ -21,31 +19,32 @@ const SuccessPage = ({ data }) => {
         </div>
 
         {/* MEANING */}
-     
-      <WordMeaning wordarr={meaning.definitions} synonyms={meaning.synonyms} />
-  
-     
+
+        <WordMeaning
+          wordarr={meaning.definitions}
+          synonyms={meaning.synonyms}
+        />
       </div>
     );
   });
 
   return (
     <main className="dark:text-white-100 flex flex-col mb-10 ">
-      <div className="flex w-full justify-between">
+      <div className="flex w-full justify-between items-center">
         <div>
           <h2 className="text-black-400 dark:text-white-100 text-4xl lg:text-6xl font-bold capitalize">
             {word}
           </h2>
           <p className="text-purple mt-4 font-bold text-2xl">{phonetic}</p>
         </div>
-        <div className="dark:text-white-100 text-black-400">souund</div>
+        <div className="dark:text-white-100 text-black-400">
+          <Sound phonetics={phonetics} />
+        </div>
       </div>
 
       {wordDetail}
-      <Link sourceUrls={sourceUrls} title='Source'/>
 
-     
-  
+      <Link sourceUrls={sourceUrls} title="Source" />
     </main>
   );
 };

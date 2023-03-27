@@ -2,12 +2,10 @@ import React from "react";
 import { useState } from "react";
 import logo from "../assets/logo.svg";
 import Toggle from "./Toggle";
-
 import Dropdown from "./Dropdown";
-import fonts from '../data/fonts'
+import fonts from "../data/fonts";
 
 const Header = () => {
-  
   const [font, setFont] = useState("sans-serif");
   const [dropDown, setDropDown] = useState(false);
   return (
@@ -20,9 +18,12 @@ const Header = () => {
 
         <div className="flex h-full items-center  ">
           {/* FONT */}
-          <div onClick={() => setDropDown(!dropDown)} className='cursor-pointer flex items-center'>
+          <div
+            onClick={() => setDropDown(!dropDown)}
+            className="cursor-pointer flex items-center"
+          >
             {" "}
-            <h3 className="ml-6 text-xl text-md dark:text-white-100">{font}</h3>
+            <h3 className="ml-2 text-xl text-md dark:text-white-100">{font}</h3>
             {/* DROP DOWN ARROW */}
             <svg
               className="ml-4 "
@@ -70,7 +71,6 @@ const Header = () => {
           setFont={setFont}
         />
       </nav>
-     
     </header>
   );
 };

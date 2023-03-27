@@ -27,3 +27,9 @@ body {
 .animate-shake {
   animation: shake 700ms  ;
 }
+.lastchild > *:not(:last-child){
+  @apply after:content-[','] 
+}
+.lastchild>*:last-child{
+  @apply  after:content-['\2022'] after:text-purple after:inline-block after:ml-1 after:text-[0.7rem] after:dark:text-white-100
+}
